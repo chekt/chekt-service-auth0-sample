@@ -8,7 +8,9 @@ const config = require('./config');
 (async () => {
   try {
     const m2mConfig = config.getM2MConfig();
+    console.log('m2mConfig:', m2mConfig);
     const jwtAssertion = m2mAssertionService.createClientAssertionJwt(m2mConfig);
+    console.log('jwtAssertion:', jwtAssertion);
     const tokenInfo = await m2mAssertionService.requestAccessTokenWithAssertion(m2mConfig, jwtAssertion);
     console.log(tokenInfo);
     const decoded = await m2mAssertionService.verifyAccessToken(m2mConfig, tokenInfo.access_token);

@@ -10,6 +10,8 @@ const getM2MConfig = (keyPath) => {
     clientId: process.env.M2M_CLIENT_ID,
     audience: process.env.M2M_AUDIENCE,
     kid: process.env.M2M_KID,
+    tokenUrl: `https://${process.env.M2M_AUTH0_DOMAIN}/oauth/token`,
+    assertionAudience: `https://${process.env.M2M_AUTH0_DOMAIN}/`,
     privateKey: fs.readFileSync(keyPath || appRoot + '/scripts/private.key'),
     client: jwksClient({
       jwksUri: `https://${process.env.M2M_AUTH0_DOMAIN}/.well-known/jwks.json`

@@ -4,6 +4,7 @@ wiki
 **/*.swp
 **/*.swo
 **/*.log
+**/private.key
 **/tags
 **/tags.*
 .husky/

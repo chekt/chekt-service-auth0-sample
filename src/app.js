@@ -26,6 +26,16 @@ app.get('/login', (req, res) => {
   res.redirect(authCodeService.buildAuthorizationUrl(authCodeConfig));
 });
 
+app.get('/config.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript; charset=UTF-8');
+
+  res.send(`
+    window.AUTH0_CLIENT_ID = '${authCodeConfig.clientId}';
+    window.AUTH0_DOMAIN = '${authCodeConfig.domain}';
+    window.AUTH0_AUDIENCE = '${authCodeConfig.audience}';
+  `);
+});
+
 app.get('/callback', async (req, res) => {
   const { code } = req.query;
   if (!code) {

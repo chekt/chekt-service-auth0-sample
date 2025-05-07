@@ -21,3 +21,4 @@ test/env.json
 node_modules/
 mtest/
 .env
+env*

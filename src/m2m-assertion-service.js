@@ -61,9 +61,7 @@ const verifyAccessToken = ({ clientId, audience, issuer, client }, token) => {
   });
 };
 
-const requestAccessTokenWithAssertion = async ({ audience, tokenUrl }, jwtAssertion) => {
-  const CUSTOM_CLAIM_NAME = 'https://api.chektdev.com/claims/partner';
-
+const requestAccessTokenWithAssertion = async ({ audience, tokenUrl, customClaimName }, jwtAssertion) => {
   const custom_claims = {
     dealer_id: '1234567890',
     site_id: '1234567890'
@@ -76,7 +74,7 @@ const requestAccessTokenWithAssertion = async ({ audience, tokenUrl }, jwtAssert
     audience
   };
 
-  body[CUSTOM_CLAIM_NAME] = JSON.stringify(custom_claims);
+  body[customClaimName] = JSON.stringify(custom_claims);
 
   const query = querystring.stringify(body);
 

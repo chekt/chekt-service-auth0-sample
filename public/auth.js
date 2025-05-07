@@ -1,5 +1,3 @@
-const AUTH0_CLIENT_ID = '8Rn2BFWVE16XEMIraQ6WoOiUhdjYzj8b';
-const AUTH0_DOMAIN = 'chektdev.auth0.com';
 const AUTH0_CALLBACK_URL = 'http://localhost:3000';
 const scope = [
   'openid',
@@ -21,13 +19,13 @@ const scope = [
 const authorizationParams = {
   redirect_uri: AUTH0_CALLBACK_URL,
   // prompt: 'consent', // 'consent' | 'login' | 'none' | 'select_account'
-  audience: 'https://api.chektdev.com',
+  audience: window.AUTH0_AUDIENCE,
   scope
 };
 
 const auth0Client = new auth0.Auth0Client({
-  domain: AUTH0_DOMAIN,
-  clientId: AUTH0_CLIENT_ID,
+  domain:  window.AUTH0_DOMAIN,
+  clientId: window.AUTH0_CLIENT_ID,
   useRefreshTokens: true,
   // cacheLocation: 'localstorage',
   authorizationParams

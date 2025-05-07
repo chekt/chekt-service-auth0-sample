@@ -13,6 +13,7 @@ const getM2MConfig = (keyPath) => {
     tokenUrl: `https://${process.env.M2M_AUTH0_DOMAIN}/oauth/token`,
     assertionAudience: `https://${process.env.M2M_AUTH0_DOMAIN}/`,
     privateKey: fs.readFileSync(keyPath || appRoot + '/scripts/private.key'),
+    customClaimName: process.env.M2M_CUSTOM_CLAIM_NAME,
     client: jwksClient({
       jwksUri: `https://${process.env.M2M_AUTH0_DOMAIN}/.well-known/jwks.json`
     })
